@@ -17,12 +17,13 @@ class DashboardController extends Controller
 
     public function index(): View
     {
-        // Ambil data parallel (opsional: bisa dioptimasi nanti)
+        // Kita gunakan Trending sebagai "Recommendations" untuk halaman utama
+        $recommendations = $this->tmdb->getTrending();
         $nowPlaying = $this->tmdb->getNowPlaying();
         $popular = $this->tmdb->getPopular();
         $topRated = $this->tmdb->getTopRated();
         $upcoming = $this->tmdb->getUpcoming();
 
-        return view('dashboard', compact('nowPlaying', 'popular', 'topRated', 'upcoming'));
+        return view('dashboard', compact('recommendations', 'nowPlaying', 'popular', 'topRated', 'upcoming'));
     }
 }

@@ -54,4 +54,9 @@ class TmdbService
     {
         return $this->get('/movie/upcoming')['results'] ?? [];
     }
+
+    public function getTrending()
+    {
+        return $this->get('/trending/movie/day')['results'] ?? [];
+    }
 }
